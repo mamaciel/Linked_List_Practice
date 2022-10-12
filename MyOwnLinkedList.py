@@ -51,11 +51,12 @@ class LList():
             
             #delete middle
             if current.next != None:
-                current.prev.next = current.next
+                current.val = current.next.val
+                current.next = current.next.next
             
             #delete tail
             elif current.next == None:
-                current.prev.next = None
+                current.val = None
                 
         return "Not found"
         
@@ -94,6 +95,8 @@ def main():
     MyList.add(3)
     MyList.add(6)
     MyList.delete(15)
+    MyList.printList()
+    MyList.delete(6)
     MyList.printList()
 
 if __name__ == "__main__":
