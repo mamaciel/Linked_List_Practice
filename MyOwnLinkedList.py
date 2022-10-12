@@ -18,9 +18,24 @@ class LList():
             while current.next:
                 current = current.next
             current.next = newNode
+        return
+            
+    def search(self, val):
+        current = self.head
+        while current:
+            if current.val == val:
+                return True
+            else:
+                current = current.next
+        return False
     
     def delete(self, val):
         if not self.head:
+            print("This linked list is empty, there is nothing to delete.")
+            return
+        
+        elif not self.search(val):
+            print(f"The value \'{val}\' was not found in the linked list.")
             return
         
         #delete head
@@ -41,25 +56,45 @@ class LList():
             #delete tail
             elif current.next == None:
                 current.prev.next = None
+                
+        return "Not found"
         
     def printList(self):
         lst = []
         current = self.head
+        
         while current:
             lst.append(current.val)
             current = current.next
-        return lst
+        
+        for i, j in enumerate(lst):
+            if i == len(lst)-1:
+                print(f'{j}')
+                return
+            else:
+                print(f'{j} -> ', end = " ")
+        return
     
 def main():
     MyList = LList()
+    MyList.delete(1)
     MyList.add(8)
-    print(MyList.printList())
+    MyList.printList()
     MyList.add(9)
-    print(MyList.printList())
+    MyList.search(1)
+    MyList.printList()
     MyList.delete(8)
-    print(MyList.printList())
+    MyList.printList()
     MyList.add(10)
-    print(MyList.printList())
+    MyList.printList()
+    MyList.add(13)
+    MyList.add(15)
+    MyList.add(20)
+    MyList.add(5)
+    MyList.add(3)
+    MyList.add(6)
+    MyList.delete(15)
+    MyList.printList()
 
 if __name__ == "__main__":
     main()
