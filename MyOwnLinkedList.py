@@ -96,7 +96,7 @@ def main():
     MyList.add(6)
     MyList.delete(15)
     MyList.printList()
-    MyList.delete(6)
+    MyList.delete()
     MyList.printList()
 
 if __name__ == "__main__":
